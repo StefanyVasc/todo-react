@@ -5,11 +5,13 @@
 - Phosphor Icons
 - React Spring
 
+## Preview 
+![preview](./src/assets/preview.PNG) 
 
-# Layout
+## Layout
 [Figma link ->](https://www.figma.com/file/Jw2TUeTnNN2k8ypxv8UCYe/ToDo-List-%E2%80%A2-Desafio-React-(Copy)?node-id=4130%3A503&mode=dev)
 
-# Funcionalidades
+## Funcionalidades
 - [x] Adicionar uma nova tarefa
 - [x] Marcar e desmarcar uma tarefa como concluída
 - [x] Remover uma tarefa da listagem
