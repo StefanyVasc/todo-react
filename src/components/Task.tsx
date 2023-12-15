@@ -1,4 +1,5 @@
 import { Trash } from "@phosphor-icons/react";
+import { animated, useSpring } from "@react-spring/web";
 import { useState } from "react";
 import styles from "./Task.module.css";
 
@@ -16,19 +17,33 @@ interface TaskProps {
 
 export function Task({ task, onDeleteTask, onToggleCheckbox }: TaskProps) {
   const [isChecked, setIsChecked] = useState(task.isChecked || false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const handleCheckboxChange = () => {
     const newCheckedState = !isChecked;
     setIsChecked(newCheckedState);
+    // Chamando a função do App para atualizar o estado
     onToggleCheckbox(task.id || "", newCheckedState);
   };
 
   const handleDeleteTask = () => {
-    onDeleteTask(task.id || "");
+    // Marcando a tarefa como deletada para iniciar a animação
+    setIsDeleting(true);
+    //  um timeout para simular a exclusão assíncrona
+    setTimeout(() => {
+      // Chamando a função do App para deletar a tarefa
+      onDeleteTask(task.id || "");
+    }, 500);
   };
 
+  // Definindo propriedades de animação com React Spring
+  const slideProps = useSpring({
+    transform: isDeleting ? "translateX(-100%)" : "translateX(0%)",
+    opacity: isDeleting ? 0 : 1,
+  });
+
   return (
-    <label className={styles.container}>
+    <animated.label style={slideProps} className={styles.container}>
       <input
         type="checkbox"
         checked={isChecked}
@@ -36,9 +51,7 @@ export function Task({ task, onDeleteTask, onToggleCheckbox }: TaskProps) {
         id={task.id}
       />
       <span className={styles.checkmark} />
-
       <span>{task.text}</span>
-
       <button
         className={styles.deleteTask}
         title="Deletar task"
@@ -46,6 +59,6 @@ export function Task({ task, onDeleteTask, onToggleCheckbox }: TaskProps) {
       >
         <Trash size={24} />
       </button>
-    </label>
+    </animated.label>
   );
 }

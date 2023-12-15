@@ -14,13 +14,16 @@ interface InputTaskProps {
 }
 
 export function InputTask({ onInputData, onMessageError }: InputTaskProps) {
+  // Estados para a nova tarefa, mensagem de erro e validação de submissão
   const [newTask, setNewTask] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault();
 
+    // Removendo espaços em branco no início e no final da nova tarefa
     const trimmedTask = newTask.trim();
+
     if (!trimmedTask) {
       const errorMessage = "Por favor, insira uma tarefa válida.";
       setErrorMessage(errorMessage);
@@ -28,12 +31,14 @@ export function InputTask({ onInputData, onMessageError }: InputTaskProps) {
       return;
     }
 
+    // Criando a tarefa com um ID único
     const task: Task = { id: Date.now().toString(), text: trimmedTask }; // Convertendo para string
     onInputData(task);
 
+    // Limpando a nova tarefa e a mensagem de erro
     setNewTask("");
     setErrorMessage("");
-    onMessageError(""); // Limpando a mensagem de erro no componente pai
+    onMessageError("");
   }
 
   function handleNewTask(event: ChangeEvent<HTMLInputElement>) {

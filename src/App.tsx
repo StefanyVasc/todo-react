@@ -14,9 +14,10 @@ function App() {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [showBanner, setShowBanner] = useState(false);
 
+  // Efeito para exibir o banner após 4 segundos
   useEffect(() => {
     const timeoutId = setTimeout(() => setShowBanner(true), 4000);
-
+    // Limpa o timeout quando o componente é desmontado
     return () => clearTimeout(timeoutId);
   }, []);
 
@@ -24,6 +25,7 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   };
 
+  // Função para lidar com a adição de uma nova tarefa
   const handleInputData = (data: TaskType) => {
     const newInputData = [...inputData, data];
     saveTasksToLocalStorage(newInputData);
