@@ -1,5 +1,7 @@
 import styles from "./App.module.css";
+import { EmptyTasks } from "./components/EmptyTasks";
 import { Header } from "./components/Header";
+import { HeaderTasks } from "./components/HeaderTasks";
 import { InputTask } from "./components/InputTask";
 import "./global.css";
 
@@ -9,7 +11,10 @@ function App() {
       <Header />
       <div className={styles.wrapper}>
         <InputTask />
-        <main></main>
+        <main>
+          <HeaderTasks />
+          <EmptyTasks />
+        </main>
       </div>
     </div>
   );
