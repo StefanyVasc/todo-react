@@ -3,3 +3,27 @@
   max-width: 46rem;
   margin: 2rem auto;
 }
+
+.errorMessage {
+  padding: 1rem;
+  border: 2px solid var(--red);
+  border-radius: 8px;
+  background-color: rgb(137 93 93 / 30%);
+  color: var(--red);
+
+  animation-name: fadeInOut;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0; /* Início e fim, o banner está invisível */
+  }
+  10%,
+  90% {
+    opacity: 1; /* Fica visível por 10% do tempo total da animação */
+  }
+}
