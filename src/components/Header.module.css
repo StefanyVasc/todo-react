@@ -1,0 +1,35 @@
+.header {
+  background-color: var(--gray-700);
+  height: 12.5rem;
+}
+
+.headerContainer {
+  max-width: 46rem;
+  margin: 0 auto;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerContainer img {
+  width: 22px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.headerContainer span {
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.headerContainer span:first-child {
+  margin-left: 12px;
+  color: var(--blue);
+}
+
+.headerContainer span:last-child {
+  color: var(--purple);
+}
